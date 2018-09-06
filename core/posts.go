@@ -329,7 +329,7 @@ func (n *OpenBazaarNode) DeletePost(slug string) error {
 	if err != nil {
 		return err
 	}
-	var index []postData
+	index := []postData{}
 	indexPath := path.Join(n.RepoPath, "root", "posts.json")
 	_, ferr := os.Stat(indexPath)
 	if !os.IsNotExist(ferr) {
@@ -354,7 +354,9 @@ func (n *OpenBazaarNode) DeletePost(slug string) error {
 			index = []postData{}
 			break
 		}
+
 		index = append(index[:i], index[i+1:]...)
+		break
 	}
 
 	// Write the index back to file
