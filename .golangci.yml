@@ -42,6 +42,7 @@ linters:
     - gocyclo
     - nakedret
     - lll
+    - prealloc
   disable:
     - errcheck
     - govet
@@ -49,5 +50,4 @@ linters:
     - megacheck
     - goimports
     - unconvert
-    - prealloc
     - goconst
