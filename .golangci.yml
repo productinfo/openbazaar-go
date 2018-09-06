@@ -42,11 +42,11 @@ linters:
     - gocyclo
     - nakedret
     - lll
+    - megacheck
   disable:
     - errcheck
     - govet
     - golint
-    - megacheck
     - goimports
     - unconvert
     - prealloc
