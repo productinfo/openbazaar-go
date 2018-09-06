@@ -3,12 +3,13 @@ package net
 import (
 	"time"
 
+	"gx/ipfs/QmZoWKhxUmZ2seW4BzX6fJkNR8hh9PsGModr7q171yq2SS/go-libp2p-peer"
+
 	"github.com/OpenBazaar/openbazaar-go/ipfs"
 	"github.com/OpenBazaar/openbazaar-go/repo"
 	"github.com/ipfs/go-ipfs/core"
 	"github.com/op/go-logging"
 	"golang.org/x/net/context"
-	"gx/ipfs/QmZoWKhxUmZ2seW4BzX6fJkNR8hh9PsGModr7q171yq2SS/go-libp2p-peer"
 )
 
 var log = logging.MustGetLogger("service")

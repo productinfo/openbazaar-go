@@ -3,9 +3,11 @@ package core
 import (
 	"encoding/base64"
 	"image"
+
 	// load gif
 	_ "image/gif"
 	"image/jpeg"
+
 	// load png
 	_ "image/png"
 	"io/ioutil"

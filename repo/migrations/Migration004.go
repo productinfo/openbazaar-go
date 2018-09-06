@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"path"
 
-	_ "github.com/mutecomm/go-sqlcipher"
 	"os"
+
+	_ "github.com/mutecomm/go-sqlcipher"
 )
 
 type Migration004 struct{}
