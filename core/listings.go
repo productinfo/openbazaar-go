@@ -1275,6 +1275,10 @@ func validateCryptocurrencyListing(listing *pb.Listing) error {
 		return ErrCryptocurrencyListingCoinTypeRequired
 	}
 
+	if len(listing.Metadata.AcceptedCurrencies) != 1 {
+		return ErrCryptocurrencyListingAcceptedCurrenciesMustBeOne
+	}
+
 	if listing.Metadata.CoinDivisibility != coinDivisibilityForType(listing.Metadata.CoinType) {
 		return ErrListingCoinDivisibilityIncorrect
 	}

@@ -20,6 +20,9 @@ var (
 	// ErrPriceCalculationRequiresExchangeRates - exchange rates dependency err
 	ErrPriceCalculationRequiresExchangeRates = errors.New("can't calculate price with exchange rates disabled")
 
+	// ErrCryptocurrencyListingAcceptedCurrenciesMustBeOne - incorrect acceptedCurrencies size err
+	ErrCryptocurrencyListingAcceptedCurrenciesMustBeOne = errors.New("cryptocurrency listings require exactly 1 accepted currency")
+
 	// ErrCryptocurrencyListingCoinTypeRequired - missing coinType err
 	ErrCryptocurrencyListingCoinTypeRequired = errors.New("cryptocurrency listings require a coinType")
 	// ErrCryptocurrencyPurchasePaymentAddressRequired - missing payment address err
