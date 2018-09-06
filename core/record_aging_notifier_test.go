@@ -24,7 +24,7 @@ func TestPerformTaskCreatesModeratorDisputeExpiryNotifications(t *testing.T) {
 	// each notification is suppose to be sent. With no notifications already queued,
 	// it should produce all the old notifications up to the most recent one expected
 	var (
-		broadcastChannel = make(chan repo.Notifier, 0)
+		broadcastChannel = make(chan repo.Notifier)
 		timeStart        = time.Now().Add(time.Duration(-50*24) * time.Hour)
 		twelveHours      = time.Duration(12) * time.Hour
 		firstInterval    = repo.ModeratorDisputeExpiry_firstInterval
@@ -179,7 +179,7 @@ func TestPerformTaskCreatesModeratorDisputeExpiryNotifications(t *testing.T) {
 	}
 
 	var (
-		closeAsyncChannelVerifier = make(chan bool, 0)
+		closeAsyncChannelVerifier = make(chan bool)
 		broadcastCount            = 0
 	)
 	go func() {
@@ -384,7 +384,7 @@ func TestPerformTaskCreatesBuyerDisputeTimeoutNotifications(t *testing.T) {
 	// each notification is suppose to be sent. With no notifications already queued,
 	// it should produce all the old notifications up to the most recent one expected
 	var (
-		broadcastChannel = make(chan repo.Notifier, 0)
+		broadcastChannel = make(chan repo.Notifier)
 		timeStart        = time.Now().Add(time.Duration(-50*24) * time.Hour)
 		twelveHours      = time.Duration(12) * time.Hour
 		firstInterval    = repo.BuyerDisputeTimeout_firstInterval
@@ -490,7 +490,7 @@ func TestPerformTaskCreatesBuyerDisputeTimeoutNotifications(t *testing.T) {
 	}
 
 	var (
-		closeAsyncChannelVerifier = make(chan bool, 0)
+		closeAsyncChannelVerifier = make(chan bool)
 		broadcastCount            = 0
 	)
 	go func() {
@@ -694,7 +694,7 @@ func TestPerformTaskCreatesPurchaseExpiryNotifications(t *testing.T) {
 	// each notification is suppose to be sent. With no notifications already queued,
 	// it should produce all the old notifications up to the most recent one expected
 	var (
-		broadcastChannel = make(chan repo.Notifier, 0)
+		broadcastChannel = make(chan repo.Notifier)
 		timeStart        = time.Now().Add(time.Duration(-50*24) * time.Hour)
 		twelveHours      = time.Duration(12) * time.Hour
 		firstInterval    = repo.BuyerDisputeExpiry_firstInterval
@@ -794,7 +794,7 @@ func TestPerformTaskCreatesPurchaseExpiryNotifications(t *testing.T) {
 	}
 
 	var (
-		closeAsyncChannelVerifier = make(chan bool, 0)
+		closeAsyncChannelVerifier = make(chan bool)
 		broadcastCount            = 0
 	)
 	go func() {
@@ -970,7 +970,7 @@ func TestPerformTaskCreatesVendorDisputeTimeoutNotifications(t *testing.T) {
 	// each notification is suppose to be sent. With no notifications already queued,
 	// it should produce all the old notifications up to the most recent one expected
 	var (
-		broadcastChannel = make(chan repo.Notifier, 0)
+		broadcastChannel = make(chan repo.Notifier)
 		timeStart        = time.Now().Add(time.Duration(-50*24) * time.Hour)
 		twelveHours      = time.Duration(12) * time.Hour
 		lastInterval     = repo.VendorDisputeTimeout_lastInterval
@@ -1043,7 +1043,7 @@ func TestPerformTaskCreatesVendorDisputeTimeoutNotifications(t *testing.T) {
 	}
 
 	var (
-		closeAsyncChannelVerifier = make(chan bool, 0)
+		closeAsyncChannelVerifier = make(chan bool)
 		broadcastCount            = 0
 	)
 	go func() {
