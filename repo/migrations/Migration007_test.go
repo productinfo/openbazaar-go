@@ -137,7 +137,7 @@ func TestMigration007(t *testing.T) {
 			lastNotifiedAtColumnOnCasesExists = true
 		}
 	}
-	if lastNotifiedAtColumnOnCasesExists == false {
+	if !lastNotifiedAtColumnOnCasesExists {
 		t.Error("Expected lastNotifiedAt column to exist on cases and not be nullable")
 	}
 
@@ -178,7 +178,7 @@ func TestMigration007(t *testing.T) {
 			lastNotifiedColumnOnPurchasesExists = true
 		}
 	}
-	if lastNotifiedColumnOnPurchasesExists == false {
+	if !lastNotifiedColumnOnPurchasesExists {
 		t.Error("Expected lastNotifiedAt column on purchases to exist on purchases and not be nullable")
 	}
 
@@ -219,7 +219,7 @@ func TestMigration007(t *testing.T) {
 			lastNotifierColumnOnSalesExists = true
 		}
 	}
-	if lastNotifierColumnOnSalesExists == false {
+	if !lastNotifierColumnOnSalesExists {
 		t.Error("Expected lastNotifiedAt column on sales to exist on sales and not be nullable")
 	}
 

@@ -175,7 +175,7 @@ func TestMigration008(t *testing.T) {
 			lastDisputeExpiryNotifiedAtColumnOnCasesExists = true
 		}
 	}
-	if lastDisputeExpiryNotifiedAtColumnOnCasesExists == false {
+	if !lastDisputeExpiryNotifiedAtColumnOnCasesExists {
 		t.Error("Expected lastDisputeExpiryNotifiedAt column to exist on cases")
 	}
 
@@ -226,13 +226,13 @@ func TestMigration008(t *testing.T) {
 			disputedAtOnPurchaseExists = true
 		}
 	}
-	if lastDisputeTimeoutNotifiedColumnOnPurchasesExists == false {
+	if !lastDisputeTimeoutNotifiedColumnOnPurchasesExists {
 		t.Error("Expected lastDisputeTimeoutNotifiedAt column to exist on purchases")
 	}
-	if lastDisputeExpiryNotifiedColumnOnPurchasesExists == false {
+	if !lastDisputeExpiryNotifiedColumnOnPurchasesExists {
 		t.Error("Expected lastDisputeExpiryNotifiedAt column to exist on purchases")
 	}
-	if disputedAtOnPurchaseExists == false {
+	if !disputedAtOnPurchaseExists {
 		t.Error("Expected disputedAt column to exist on purchases")
 	}
 
@@ -291,7 +291,7 @@ func TestMigration008(t *testing.T) {
 			lastDisputeTimeoutNotifierColumnOnSalesExists = true
 		}
 	}
-	if lastDisputeTimeoutNotifierColumnOnSalesExists == false {
+	if !lastDisputeTimeoutNotifierColumnOnSalesExists {
 		t.Error("Expected lastDisputeTimeoutNotifiedAt column on sales to exist on sales and not be nullable")
 	}
 

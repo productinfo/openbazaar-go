@@ -346,34 +346,34 @@ func TestPerformTaskCreatesModeratorDisputeExpiryNotifications(t *testing.T) {
 		}
 	}
 
-	if checkNeverNotifiedFifteenDay != true {
+	if !checkNeverNotifiedFifteenDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNeverNotifiedFifteenDay")
 	}
-	if checkNeverNotifiedFourtyDay != true {
+	if !checkNeverNotifiedFourtyDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNeverNotifiedFourtyDay")
 	}
-	if checkNeverNotifiedFourtyFourDay != true {
+	if !checkNeverNotifiedFourtyFourDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNeverNotifiedFourtyFourDay")
 	}
-	if checkNeverNotifiedFourtyFiveDay != true {
+	if !checkNeverNotifiedFourtyFiveDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNeverNotifiedFourtyFiveDay")
 	}
-	if checkNotifiedToFifteenDaysFourtyDay != true {
+	if !checkNotifiedToFifteenDaysFourtyDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFifteenDaysFourtyDay")
 	}
-	if checkNotifiedToFifteenDaysFourtyFourDay != true {
+	if !checkNotifiedToFifteenDaysFourtyFourDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFifteenDaysFourtyFourDay")
 	}
-	if checkNotifiedToFifteenDaysFourtyFiveDay != true {
+	if !checkNotifiedToFifteenDaysFourtyFiveDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFifteenDaysFourtyFiveDay")
 	}
-	if checkNotifiedToFourtyDaysFourtyFourDay != true {
+	if !checkNotifiedToFourtyDaysFourtyFourDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFourtyDaysFourtyFourDay")
 	}
-	if checkNotifiedToFourtyDaysFourtyFiveDay != true {
+	if !checkNotifiedToFourtyDaysFourtyFiveDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFourtyDaysFourtyFiveDay")
 	}
-	if checkNotifiedToFourtyFourDaysFourtyFiveDay != true {
+	if !checkNotifiedToFourtyFourDaysFourtyFiveDay {
 		t.Errorf("Expected dispute expiry notification missing: checkNotifiedToFourtyFourDaysFourtyFiveDay")
 	}
 }
@@ -657,34 +657,34 @@ func TestPerformTaskCreatesBuyerDisputeTimeoutNotifications(t *testing.T) {
 		}
 	}
 
-	if checkNeverNotifiedPurchaseFirstNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseFirstNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseFirstNotificationSeen")
 	}
-	if checkNeverNotifiedPurchaseSecondNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseSecondNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseSecondNotificationSeen")
 	}
-	if checkNeverNotifiedPurchaseThirdNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseThirdNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseThirdNotificationSeen")
 	}
-	if checkNeverNotifiedPurchaseLastNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseLastNotificationSeen")
 	}
-	if checkFifteenDayPurchaseSecondNotificationSeen != true {
+	if !checkFifteenDayPurchaseSecondNotificationSeen {
 		t.Errorf("Expected notification missing: checkFifteenDayPurchaseSecondNotificationSeen")
 	}
-	if checkFifteenDayPurchaseThirdNotificationSeen != true {
+	if !checkFifteenDayPurchaseThirdNotificationSeen {
 		t.Errorf("Expected notification missing: checkFifteenDayPurchaseThirdNotificationSeen")
 	}
-	if checkFifteenDayPurchaseLastNotificationSeen != true {
+	if !checkFifteenDayPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkFifteenDayPurchaseLastNotificationSeen")
 	}
-	if checkFourtyDayPurchaseThirdNotificationSeen != true {
+	if !checkFourtyDayPurchaseThirdNotificationSeen {
 		t.Errorf("Expected notification missing: checkFourtyDayPurchaseThirdNotificationSeen")
 	}
-	if checkFourtyDayPurchaseLastNotificationSeen != true {
+	if !checkFourtyDayPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkFourtyDayPurchaseLastNotificationSeen")
 	}
-	if checkFourtyFourDayPurchaseLastNotificationSeen != true {
+	if !checkFourtyFourDayPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkFourtyFourDayPurchaseLastNotificationSeen")
 	}
 }
@@ -944,22 +944,22 @@ func TestPerformTaskCreatesPurchaseExpiryNotifications(t *testing.T) {
 		}
 	}
 
-	if checkNeverNotifiedPurchaseFirstNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseFirstNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseFirstNotificationSeen")
 	}
-	if checkNeverNotifiedPurchaseSecondNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseSecondNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseSecondNotificationSeen")
 	}
-	if checkNeverNotifiedPurchaseLastNotificationSeen != true {
+	if !checkNeverNotifiedPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedPurchaseLastNotificationSeen")
 	}
-	if checkFifteenDayPurchaseSecondNotificationSeen != true {
+	if !checkFifteenDayPurchaseSecondNotificationSeen {
 		t.Errorf("Expected notification missing: checkFifteenDayPurchaseSecondNotificationSeen")
 	}
-	if checkFifteenDayPurchaseLastNotificationSeen != true {
+	if !checkFifteenDayPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkFifteenDayPurchaseLastNotificationSeen")
 	}
-	if checkFourtyDayPurchaseLastNotificationSeen != true {
+	if !checkFourtyDayPurchaseLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkFourtyDayPurchaseLastNotificationSeen")
 	}
 }
@@ -1154,7 +1154,7 @@ func TestPerformTaskCreatesVendorDisputeTimeoutNotifications(t *testing.T) {
 		}
 	}
 
-	if checkNeverNotifiedSaleLastNotificationSeen != true {
+	if !checkNeverNotifiedSaleLastNotificationSeen {
 		t.Errorf("Expected notification missing: checkNeverNotifiedSale_LastNotificationSeen")
 	}
 }
