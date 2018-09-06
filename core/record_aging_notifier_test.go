@@ -228,7 +228,7 @@ func TestPerformTaskCreatesModeratorDisputeExpiryNotifications(t *testing.T) {
 		}
 		switch caseID {
 		case neverNotified.CaseID, notifiedUpToFifteenDay.CaseID, notifiedUpToFourtyDays.CaseID, notifiedUpToFourtyFourDays.CaseID:
-			durationFromActual := time.Now().Sub(time.Unix(lastDisputeExpiryNotifiedAt, 0))
+			durationFromActual := time.Since(time.Unix(lastDisputeExpiryNotifiedAt, 0))
 			if durationFromActual > (time.Duration(5) * time.Second) {
 				t.Errorf("Expected %s to have lastDisputeExpiryNotifiedAt set when executed, was %s", caseID, time.Unix(lastDisputeExpiryNotifiedAt, 0).String())
 			}
@@ -539,7 +539,7 @@ func TestPerformTaskCreatesBuyerDisputeTimeoutNotifications(t *testing.T) {
 		}
 		switch orderID {
 		case neverNotified.OrderID, notifiedUpToFifteenDay.OrderID, notifiedUpToFourtyDay.OrderID, notifiedUpToFourtyFourDays.OrderID:
-			durationFromActual := time.Now().Sub(time.Unix(lastDisputeTimeoutNotifiedAt, 0))
+			durationFromActual := time.Since(time.Unix(lastDisputeTimeoutNotifiedAt, 0))
 			if durationFromActual > (time.Duration(5) * time.Second) {
 				t.Errorf("Expected %s to have lastDisputeTimeoutNotifiedAt set when executed, was %s", orderID, time.Unix(lastDisputeTimeoutNotifiedAt, 0).String())
 			}
@@ -847,7 +847,7 @@ func TestPerformTaskCreatesPurchaseExpiryNotifications(t *testing.T) {
 		}
 		switch orderID {
 		case neverNotified.OrderID, notifiedUpToFifteenDay.OrderID, notifiedUpToFourtyDay.OrderID:
-			durationFromActual := time.Now().Sub(time.Unix(lastDisputeExpiryNotifiedAt, 0))
+			durationFromActual := time.Since(time.Unix(lastDisputeExpiryNotifiedAt, 0))
 			if durationFromActual > (time.Duration(5) * time.Second) {
 				t.Errorf("Expected %s to have lastDisputeExpiryNotifiedAt set when executed, was %s", orderID, time.Unix(lastDisputeExpiryNotifiedAt, 0).String())
 			}
@@ -1092,7 +1092,7 @@ func TestPerformTaskCreatesVendorDisputeTimeoutNotifications(t *testing.T) {
 		}
 		switch orderID {
 		case neverNotified.OrderID:
-			durationFromActual := time.Now().Sub(time.Unix(lastDisputeTimeoutNotifiedAt, 0))
+			durationFromActual := time.Since(time.Unix(lastDisputeTimeoutNotifiedAt, 0))
 			if durationFromActual > (time.Duration(5) * time.Second) {
 				t.Errorf("Expected %s to have lastDisputeTimeoutNotifiedAt set when executed, was %s", orderID, time.Unix(lastDisputeTimeoutNotifiedAt, 0).String())
 			}
