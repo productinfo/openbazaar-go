@@ -29,6 +29,8 @@ import (
 	"gx/ipfs/QmcZfnkapfECQGcLZaf9B79NRg7cRa9EnZh4LSbkCzwNvY/go-cid"
 	"io/ioutil"
 
+	"gx/ipfs/QmTmqJGRQfuH8eKWD1FjThwPRipt1QhqJQNZ8MpzmfAAxo/go-ipfs-ds-help"
+
 	"github.com/OpenBazaar/jsonpb"
 	"github.com/OpenBazaar/openbazaar-go/core"
 	"github.com/OpenBazaar/openbazaar-go/ipfs"
@@ -45,7 +47,6 @@ import (
 	ipnspb "github.com/ipfs/go-ipfs/namesys/pb"
 	ipnspath "github.com/ipfs/go-ipfs/path"
 	fsrepo "github.com/ipfs/go-ipfs/repo/fsrepo"
-	"gx/ipfs/QmTmqJGRQfuH8eKWD1FjThwPRipt1QhqJQNZ8MpzmfAAxo/go-ipfs-ds-help"
 )
 
 type JsonAPIConfig struct {
@@ -3448,24 +3449,30 @@ func (i *jsonAPIHandler) GETHealthCheck(w http.ResponseWriter, r *http.Request) 
 	}
 
 	re := resp{true, true, true}
-	pingErr := i.node.Datastore.Ping()
-	if pingErr != nil {
+
+	if err := i.node.Datastore.Ping(); err != nil {
 		re.Database = false
 	}
-	_, ferr := os.Stat(i.node.RepoPath)
-	if ferr != nil {
+	if _, err := os.Stat(i.node.RepoPath); err != nil {
 		re.IPFSRoot = false
 	}
-	peers := ipfs.ConnectedPeers(i.node.IpfsNode)
-	if len(peers) == 0 {
+	if peers := ipfs.ConnectedPeers(i.node.IpfsNode); len(peers) == 0 {
 		re.Peers = false
 	}
-	if pingErr != nil || ferr != nil {
-		ret, _ := json.MarshalIndent(re, "", "    ")
-		ErrorResponse(w, http.StatusNotFound, string(ret))
+
+	reJSON, err := json.MarshalIndent(re, "", "    ")
+	if err != nil {
+		ErrorResponse(w, http.StatusInternalServerError, err.Error())
 		return
 	}
-	SanitizedResponse(w, "{}")
+
+	status := http.StatusOK
+	if !re.Database || !re.IPFSRoot || !re.Peers {
+		status = http.StatusInternalServerError
+	}
+
+	w.WriteHeader(status)
+	fmt.Fprintln(w, string(reJSON))
 }
 
 func (i *jsonAPIHandler) POSTPublish(w http.ResponseWriter, r *http.Request) {
