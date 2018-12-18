@@ -2259,6 +2259,7 @@ func (i *jsonAPIHandler) POSTVerifyMessage(w http.ResponseWriter, r *http.Reques
 		Content   string `json:"content"`
 		Signature string `json:"signature"`
 		Pubkey    string `json:"pubkey"`
+		PeerId    string `json:"peerId"`
 	}
 	var msg ciphertext
 	decoder := json.NewDecoder(r.Body)
@@ -2278,6 +2279,19 @@ func (i *jsonAPIHandler) POSTVerifyMessage(w http.ResponseWriter, r *http.Reques
 		ErrorResponse(w, http.StatusBadRequest, err.Error())
 		return
 	}
+
+	// Check if peerId was generated from the pubkey provided
+	generatedPeer, err := peer.IDFromPublicKey(pubkey)
+	if err != nil {
+		ErrorResponse(w, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if generatedPeer.Pretty() != msg.PeerId {
+		ErrorResponse(w, http.StatusBadRequest, "submitted peerId does not belong to the pubkey")
+		return
+	}
+
 	contentBytes, err := hex.DecodeString(msg.Content)
 	if err != nil {
 		ErrorResponse(w, http.StatusBadRequest, err.Error())
@@ -2294,7 +2308,7 @@ func (i *jsonAPIHandler) POSTVerifyMessage(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	SanitizedResponse(w, `{}`)
+	SanitizedResponse(w, fmt.Sprintf(`{"peerId":"%s"}`, msg.PeerId))
 }
 
 func (i *jsonAPIHandler) POSTChat(w http.ResponseWriter, r *http.Request) {
